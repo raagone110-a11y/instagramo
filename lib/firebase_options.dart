@@ -46,11 +46,11 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_YOUR_API_KEY',
-    appId: '1:000000000000:android:0000000000000000000000',
-    messagingSenderId: '000000000000',
-    projectId: 'instagramo-project',
-    storageBucket: 'instagramo-project.appspot.com',
+    apiKey: 'AIzaSyDExZIzckRkpGkjGI4coJPeji0s_Ue4pZI',
+    appId: '1:214823995131:android:6c23b3ff87e03d3e9bd25e',
+    messagingSenderId: '214823995131',
+    projectId: 'instagramo-825f0',
+    storageBucket: 'instagramo-825f0.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
