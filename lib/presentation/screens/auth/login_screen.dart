@@ -420,7 +420,7 @@ class _LoginButton extends ConsumerWidget {
             : const Text('Log In',
                 style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.q700,
+                    fontWeight: FontWeight.w700,
                     letterSpacing: 0.3)),
       ),
     );
