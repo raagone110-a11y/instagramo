@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "340833437734",
+    "project_id": "instagramo-app",
+    "storage_bucket": "instagramo-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340833437734:android:ef66fd1be9b8e117057ee7",
+        "android_client_info": {
+          "package_name": "com.example.instagramo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340833437734-349ige24fk3m0fhrb963bhpqf4q2dc1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.instagramo",
+            "certificate_hash": "a4c41d4c5c4a4cf051e6d65ffc85390613fcc4d5"
+          }
+        },
+        {
+          "client_id": "340833437734-a4mq81nnrv005lq2njqhf6qmgfoaf8sh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi1euxOaCEcnAkK4S7Z643yuoBP5YkO6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340833437734-a4mq81nnrv005lq2njqhf6qmgfoaf8sh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
