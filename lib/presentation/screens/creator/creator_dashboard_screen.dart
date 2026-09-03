@@ -114,7 +114,9 @@ class CreatorDashboardScreen extends ConsumerWidget {
                 final isSelected = selectedPeriod == period;
                 return Expanded(
                   child: GestureDetector(
-                    onTap: () => ref.read(selectedPeriodProvider.notifier).state = period,
+                    onTap: () => ref
+                        .read(selectedPeriodProvider.notifier)
+                        .state = period,
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 250),
                       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -144,10 +146,7 @@ class CreatorDashboardScreen extends ConsumerWidget {
                 );
               }).toList(),
             ),
-          )
-              .animate()
-              .fade(duration: 400.ms)
-              .slideY(begin: -0.1, end: 0),
+          ).animate().fade(duration: 400.ms).slideY(begin: -0.1, end: 0),
 
           const SizedBox(height: 20),
 
@@ -285,10 +284,8 @@ class _StatsCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withOpacity(0.12),
+                  color:
+                      Theme.of(context).colorScheme.primary.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(
@@ -332,10 +329,8 @@ class _StatsCard extends StatelessWidget {
           Text(
             stat.label,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.5),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                 ),
           ),
         ],
@@ -444,10 +439,8 @@ class _ChartPlaceholder extends StatelessWidget {
           Text(
             '$label trend chart placeholder',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.4),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
                 ),
           ),
         ],
@@ -506,10 +499,8 @@ class _EngagementChartPlaceholder extends StatelessWidget {
           Text(
             'Engagement line chart placeholder',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.4),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
                 ),
           ),
         ],
@@ -541,10 +532,7 @@ class _LegendDot extends StatelessWidget {
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withOpacity(0.6),
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
               ),
         ),
       ],
@@ -575,9 +563,12 @@ class _LineChartPainter extends CustomPainter {
       final curr = points[i];
       final midX = (prev.dx + curr.dx) / 2;
       path.cubicTo(
-        midX, prev.dy,
-        midX, curr.dy,
-        curr.dx, curr.dy,
+        midX,
+        prev.dy,
+        midX,
+        curr.dy,
+        curr.dx,
+        curr.dy,
       );
     }
 
@@ -637,17 +628,23 @@ class _AudienceInsights extends ConsumerWidget {
               _InsightTab(
                 label: 'Gender',
                 isSelected: selectedInsight == 0,
-                onTap: () => ref.read(selectedAudienceInsightProvider.notifier).state = 0,
+                onTap: () => ref
+                    .read(selectedAudienceInsightProvider.notifier)
+                    .state = 0,
               ),
               _InsightTab(
                 label: 'Age',
                 isSelected: selectedInsight == 1,
-                onTap: () => ref.read(selectedAudienceInsightProvider.notifier).state = 1,
+                onTap: () => ref
+                    .read(selectedAudienceInsightProvider.notifier)
+                    .state = 1,
               ),
               _InsightTab(
                 label: 'Location',
                 isSelected: selectedInsight == 2,
-                onTap: () => ref.read(selectedAudienceInsightProvider.notifier).state = 2,
+                onTap: () => ref
+                    .read(selectedAudienceInsightProvider.notifier)
+                    .state = 2,
               ),
             ],
           ),
@@ -781,10 +778,7 @@ class _InsightTab extends StatelessWidget {
             style: TextStyle(
               color: isSelected
                   ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.5),
+                  : Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
               fontWeight: FontWeight.w700,
               fontSize: 14,
             ),
@@ -842,10 +836,8 @@ class _InsightBar extends StatelessWidget {
             textAlign: TextAlign.end,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w700,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.6),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                 ),
           ),
         ),

@@ -226,9 +226,7 @@ class _ReelsScreenState extends ConsumerState<ReelsScreen> {
                           ),
                         ],
                       ),
-                    )
-                        .animate()
-                        .fade(duration: 500.ms),
+                    ).animate().fade(duration: 500.ms),
 
                     // ── Right Side Actions ───────────────────────────────────
                     Positioned(
@@ -389,9 +387,7 @@ class _ReelsScreenState extends ConsumerState<ReelsScreen> {
                             ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                          )
-                              .animate()
-                              .fade(delay: 300.ms, duration: 500.ms),
+                          ).animate().fade(delay: 300.ms, duration: 500.ms),
 
                           const SizedBox(height: 8),
 
@@ -415,9 +411,7 @@ class _ReelsScreenState extends ConsumerState<ReelsScreen> {
                                 ),
                               ),
                             ],
-                          )
-                              .animate()
-                              .fade(delay: 400.ms, duration: 500.ms),
+                          ).animate().fade(delay: 400.ms, duration: 500.ms),
                         ],
                       ),
                     ),

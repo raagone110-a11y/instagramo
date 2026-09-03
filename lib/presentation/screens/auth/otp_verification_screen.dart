@@ -90,10 +90,7 @@ class OtpVerificationScreen extends ConsumerWidget {
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withOpacity(0.1),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: Icon(
@@ -133,9 +130,7 @@ class OtpVerificationScreen extends ConsumerWidget {
                           .onSurface
                           .withOpacity(0.6),
                     ),
-              )
-                  .animate()
-                  .fade(delay: 300.ms, duration: 500.ms),
+              ).animate().fade(delay: 300.ms, duration: 500.ms),
 
               const SizedBox(height: 8),
 
@@ -147,9 +142,7 @@ class OtpVerificationScreen extends ConsumerWidget {
                   fontWeight: FontWeight.w600,
                   fontSize: 15,
                 ),
-              )
-                  .animate()
-                  .fade(delay: 400.ms, duration: 500.ms),
+              ).animate().fade(delay: 400.ms, duration: 500.ms),
 
               const SizedBox(height: 40),
 
@@ -165,23 +158,16 @@ class OtpVerificationScreen extends ConsumerWidget {
                   shape: MaterialPinShape.outlined,
                   cellSize: const Size(48, 56),
                   borderRadius: BorderRadius.circular(12),
-                  fillColor: Theme.of(context)
-                      .colorScheme
-                      .surfaceContainerHighest,
-                  focusedFillColor: Theme.of(context)
-                      .colorScheme
-                      .surfaceContainerHighest,
-                  filledFillColor: Theme.of(context)
-                      .colorScheme
-                      .surfaceContainerHighest,
-                  borderColor: Theme.of(context)
-                      .colorScheme
-                      .outline
-                      .withOpacity(0.3),
-                  focusedBorderColor:
-                      Theme.of(context).colorScheme.primary,
-                  filledBorderColor:
-                      Theme.of(context).colorScheme.primary,
+                  fillColor:
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
+                  focusedFillColor:
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
+                  filledFillColor:
+                      Theme.of(context).colorScheme.surfaceContainerHighest,
+                  borderColor:
+                      Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                  focusedBorderColor: Theme.of(context).colorScheme.primary,
+                  filledBorderColor: Theme.of(context).colorScheme.primary,
                   textStyle: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
@@ -190,7 +176,6 @@ class OtpVerificationScreen extends ConsumerWidget {
                   entryAnimation: MaterialPinAnimation.fade,
                 ),
                 onChanged: (value) {
-
                   ref.read(otpControllerProvider.notifier).state = value;
                 },
                 onCompleted: (value) {
@@ -228,9 +213,7 @@ class OtpVerificationScreen extends ConsumerWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: timer > 0
-                            ? "Didn't receive the code? "
-                            : '',
+                        text: timer > 0 ? "Didn't receive the code? " : '',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
@@ -241,20 +224,19 @@ class OtpVerificationScreen extends ConsumerWidget {
                       if (timer > 0)
                         TextSpan(
                           text: 'Resend in ${timer}s',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onSurface
-                                    .withOpacity(0.4),
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withOpacity(0.4),
+                                    fontWeight: FontWeight.w600,
+                                  ),
                         ),
                     ],
                   ),
                 ),
-              )
-                  .animate()
-                  .fade(delay: 600.ms, duration: 500.ms),
+              ).animate().fade(delay: 600.ms, duration: 500.ms),
 
               const SizedBox(height: 20),
 
@@ -299,10 +281,7 @@ class OtpVerificationScreen extends ConsumerWidget {
                       ),
                     ),
                   ),
-                )
-                    .animate()
-                    .fade(duration: 400.ms)
-                    .scale(duration: 400.ms),
+                ).animate().fade(duration: 400.ms).scale(duration: 400.ms),
 
               const Spacer(),
 

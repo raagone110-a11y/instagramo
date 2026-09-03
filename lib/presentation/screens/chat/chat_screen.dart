@@ -6,6 +6,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 // ─── Message Data Model ───────────────────────────────────────────────────────
 
 enum MessageType { text, image, voice, system }
+
 enum MessageStatus { sent, delivered, read }
 
 class MessageModel {
@@ -58,14 +59,16 @@ final messagesProvider = StateProvider<List<MessageModel>>((ref) => [
         content: 'Hey! How are you doing?',
         type: MessageType.text,
         isSentByMe: false,
-        timestamp: DateTime.now().subtract(const Duration(hours: 2, minutes: 30)),
+        timestamp:
+            DateTime.now().subtract(const Duration(hours: 2, minutes: 30)),
       ),
       MessageModel(
         id: '2',
         content: "I'm great! Just got back from Bali 🌴",
         type: MessageType.text,
         isSentByMe: true,
-        timestamp: DateTime.now().subtract(const Duration(hours: 2, minutes: 28)),
+        timestamp:
+            DateTime.now().subtract(const Duration(hours: 2, minutes: 28)),
         status: MessageStatus.read,
       ),
       MessageModel(
@@ -73,14 +76,16 @@ final messagesProvider = StateProvider<List<MessageModel>>((ref) => [
         content: 'That photo from Bali was amazing! 📸',
         type: MessageType.text,
         isSentByMe: false,
-        timestamp: DateTime.now().subtract(const Duration(hours: 2, minutes: 25)),
+        timestamp:
+            DateTime.now().subtract(const Duration(hours: 2, minutes: 25)),
       ),
       MessageModel(
         id: '4',
         content: 'Thank you! The sunsets there were incredible',
         type: MessageType.text,
         isSentByMe: true,
-        timestamp: DateTime.now().subtract(const Duration(hours: 2, minutes: 20)),
+        timestamp:
+            DateTime.now().subtract(const Duration(hours: 2, minutes: 20)),
         status: MessageStatus.read,
       ),
       MessageModel(
@@ -88,14 +93,17 @@ final messagesProvider = StateProvider<List<MessageModel>>((ref) => [
         content: 'Would you recommend the Ubud area?',
         type: MessageType.text,
         isSentByMe: false,
-        timestamp: DateTime.now().subtract(const Duration(hours: 1, minutes: 45)),
+        timestamp:
+            DateTime.now().subtract(const Duration(hours: 1, minutes: 45)),
       ),
       MessageModel(
         id: '6',
-        content: "Absolutely! The rice terraces and temples are breathtaking. Let me send you some pics!",
+        content:
+            "Absolutely! The rice terraces and temples are breathtaking. Let me send you some pics!",
         type: MessageType.text,
         isSentByMe: true,
-        timestamp: DateTime.now().subtract(const Duration(hours: 1, minutes: 40)),
+        timestamp:
+            DateTime.now().subtract(const Duration(hours: 1, minutes: 40)),
         status: MessageStatus.read,
       ),
       MessageModel(
@@ -162,10 +170,13 @@ class ChatScreen extends ConsumerWidget {
               itemCount: messages.length + (isTyping ? 1 : 0),
               itemBuilder: (context, index) {
                 if (isTyping && index == 0) {
-                  return const _TypingIndicator().animate().fade(duration: 300.ms);
+                  return const _TypingIndicator()
+                      .animate()
+                      .fade(duration: 300.ms);
                 }
                 final messageIndex = isTyping ? index - 1 : index;
-                if (messageIndex >= messages.length) return const SizedBox.shrink();
+                if (messageIndex >= messages.length)
+                  return const SizedBox.shrink();
                 final message = messages[messages.length - 1 - messageIndex];
                 return _MessageBubble(message: message);
               },
@@ -326,7 +337,8 @@ class _MessageBubble extends StatelessWidget {
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: isSent ? MainAxisAlignment.end : MainAxisAlignment.start,
+          mainAxisAlignment:
+              isSent ? MainAxisAlignment.end : MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Flexible(
@@ -393,10 +405,7 @@ class _MessageBubble extends StatelessWidget {
               .withOpacity(0.5),
           child: Icon(
             Icons.image_not_supported_outlined,
-            color: Theme.of(context)
-                .colorScheme
-                .onSurface
-                .withOpacity(0.3),
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
           ),
         ),
       ),
@@ -409,19 +418,13 @@ class _MessageBubble extends StatelessWidget {
         return Icon(
           Icons.check_rounded,
           size: 16,
-          color: Theme.of(context)
-              .colorScheme
-              .onSurface
-              .withOpacity(0.4),
+          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
         );
       case MessageStatus.delivered:
         return Icon(
           Icons.done_all_rounded,
           size: 16,
-          color: Theme.of(context)
-              .colorScheme
-              .onSurface
-              .withOpacity(0.4),
+          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
         );
       case MessageStatus.read:
         return Icon(
@@ -482,10 +485,7 @@ class _Dot extends StatelessWidget {
       width: 8,
       height: 8,
       decoration: BoxDecoration(
-        color: Theme.of(context)
-            .colorScheme
-            .onSurface
-            .withOpacity(0.4),
+        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
         shape: BoxShape.circle,
       ),
     )
@@ -570,10 +570,7 @@ class _ChatInputBarState extends ConsumerState<_ChatInputBar> {
           IconButton(
             icon: Icon(
               Icons.photo_camera_rounded,
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withOpacity(0.6),
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
             ),
             onPressed: () {
               // Open image picker
@@ -584,10 +581,7 @@ class _ChatInputBarState extends ConsumerState<_ChatInputBar> {
           IconButton(
             icon: Icon(
               Icons.attach_file_rounded,
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withOpacity(0.6),
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
             ),
             onPressed: () {
               // Open attachment options

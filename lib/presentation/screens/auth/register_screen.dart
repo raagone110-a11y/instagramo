@@ -57,10 +57,7 @@ class RegisterScreen extends ConsumerWidget {
                         fontWeight: FontWeight.w800,
                         letterSpacing: -0.5,
                       ),
-                )
-                    .animate()
-                    .fade(duration: 500.ms)
-                    .slideY(begin: 0.3, end: 0),
+                ).animate().fade(duration: 500.ms).slideY(begin: 0.3, end: 0),
                 const SizedBox(height: 8),
                 Text(
                   'Join Instagramo and start sharing your moments',
@@ -70,9 +67,7 @@ class RegisterScreen extends ConsumerWidget {
                             .onSurface
                             .withOpacity(0.6),
                       ),
-                )
-                    .animate()
-                    .fade(delay: 100.ms, duration: 500.ms),
+                ).animate().fade(delay: 100.ms, duration: 500.ms),
 
                 const SizedBox(height: 36),
 
@@ -165,8 +160,7 @@ class RegisterScreen extends ConsumerWidget {
                     if (value == null || value.isEmpty) {
                       return 'Please confirm your password';
                     }
-                    if (value !=
-                        ref.read(passwordControllerProvider).text) {
+                    if (value != ref.read(passwordControllerProvider).text) {
                       return 'Passwords do not match';
                     }
                     return null;
@@ -196,8 +190,9 @@ class RegisterScreen extends ConsumerWidget {
                                   true;
                               // Simulate registration
                               Future.delayed(const Duration(seconds: 2), () {
-                                ref.read(registerLoadingProvider.notifier).state =
-                                    false;
+                                ref
+                                    .read(registerLoadingProvider.notifier)
+                                    .state = false;
                                 context.go('/otp-verification');
                               });
                             }
@@ -209,8 +204,10 @@ class RegisterScreen extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(16),
                       ),
                       elevation: 0,
-                      disabledBackgroundColor:
-                          Theme.of(context).colorScheme.primary.withOpacity(0.4),
+                      disabledBackgroundColor: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.4),
                       disabledForegroundColor:
                           Theme.of(context).colorScheme.onPrimary,
                     ),

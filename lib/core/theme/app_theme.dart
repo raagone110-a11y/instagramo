@@ -82,7 +82,8 @@ final ThemeData instagramoLightTheme = ThemeData(
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: InstagramoColors.primaryLight, width: 1.5),
+      borderSide:
+          const BorderSide(color: InstagramoColors.primaryLight, width: 1.5),
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
@@ -267,7 +268,8 @@ final ThemeData instagramoDarkTheme = ThemeData(
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: InstagramoColors.primaryDark, width: 1.5),
+      borderSide:
+          const BorderSide(color: InstagramoColors.primaryDark, width: 1.5),
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
@@ -299,7 +301,8 @@ final ThemeData instagramoDarkTheme = ThemeData(
   ),
   chipTheme: ChipThemeData(
     backgroundColor: const Color(0xFF2B2930),
-    labelStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Colors.white),
+    labelStyle: const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w500, color: Colors.white),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(

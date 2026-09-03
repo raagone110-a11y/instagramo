@@ -46,8 +46,7 @@ class FeedNotifier extends StateNotifier<FeedState> {
   final PostRepository _postRepository;
   final Ref _ref;
 
-  FeedNotifier(this._postRepository, this._ref)
-      : super(const FeedState());
+  FeedNotifier(this._postRepository, this._ref) : super(const FeedState());
 
   /// Load initial feed
   Future<void> loadFeed({
@@ -67,9 +66,8 @@ class FeedNotifier extends StateNotifier<FeedState> {
         posts: posts,
         isLoading: false,
         hasMore: posts.length >= AppConstants.feedPageSize,
-        lastDocument: posts.isNotEmpty
-            ? _createDocumentSnapshot(posts.last)
-            : null,
+        lastDocument:
+            posts.isNotEmpty ? _createDocumentSnapshot(posts.last) : null,
       );
     } catch (e) {
       state = state.copyWith(
@@ -100,9 +98,8 @@ class FeedNotifier extends StateNotifier<FeedState> {
         posts: [...state.posts, ...posts],
         isLoadingMore: false,
         hasMore: posts.length >= AppConstants.feedPageSize,
-        lastDocument: posts.isNotEmpty
-            ? _createDocumentSnapshot(posts.last)
-            : null,
+        lastDocument:
+            posts.isNotEmpty ? _createDocumentSnapshot(posts.last) : null,
       );
     } catch (e) {
       state = state.copyWith(
@@ -125,9 +122,8 @@ class FeedNotifier extends StateNotifier<FeedState> {
         posts: posts,
         isLoading: false,
         hasMore: posts.length >= AppConstants.feedPageSize,
-        lastDocument: posts.isNotEmpty
-            ? _createDocumentSnapshot(posts.last)
-            : null,
+        lastDocument:
+            posts.isNotEmpty ? _createDocumentSnapshot(posts.last) : null,
       );
     } catch (e) {
       state = state.copyWith(
@@ -153,9 +149,8 @@ class FeedNotifier extends StateNotifier<FeedState> {
         posts: [...state.posts, ...posts],
         isLoadingMore: false,
         hasMore: posts.length >= AppConstants.feedPageSize,
-        lastDocument: posts.isNotEmpty
-            ? _createDocumentSnapshot(posts.last)
-            : null,
+        lastDocument:
+            posts.isNotEmpty ? _createDocumentSnapshot(posts.last) : null,
       );
     } catch (e) {
       state = state.copyWith(
@@ -183,9 +178,8 @@ class FeedNotifier extends StateNotifier<FeedState> {
         posts: posts,
         isLoading: false,
         hasMore: posts.length >= AppConstants.feedPageSize,
-        lastDocument: posts.isNotEmpty
-            ? _createDocumentSnapshot(posts.last)
-            : null,
+        lastDocument:
+            posts.isNotEmpty ? _createDocumentSnapshot(posts.last) : null,
       );
     } catch (e) {
       state = state.copyWith(
@@ -206,9 +200,7 @@ class FeedNotifier extends StateNotifier<FeedState> {
       if (post.postId == postId) {
         return post.copyWith(
           isLiked: !currentIsLiked,
-          likeCount: currentIsLiked
-              ? post.likeCount - 1
-              : post.likeCount + 1,
+          likeCount: currentIsLiked ? post.likeCount - 1 : post.likeCount + 1,
         );
       }
       return post;
@@ -228,9 +220,7 @@ class FeedNotifier extends StateNotifier<FeedState> {
         if (post.postId == postId) {
           return post.copyWith(
             isLiked: currentIsLiked,
-            likeCount: currentIsLiked
-                ? post.likeCount + 1
-                : post.likeCount - 1,
+            likeCount: currentIsLiked ? post.likeCount + 1 : post.likeCount - 1,
           );
         }
         return post;
@@ -251,9 +241,7 @@ class FeedNotifier extends StateNotifier<FeedState> {
       if (post.postId == postId) {
         return post.copyWith(
           isSaved: !currentIsSaved,
-          saves: currentIsSaved
-              ? post.saves - 1
-              : post.saves + 1,
+          saves: currentIsSaved ? post.saves - 1 : post.saves + 1,
         );
       }
       return post;
@@ -273,9 +261,7 @@ class FeedNotifier extends StateNotifier<FeedState> {
         if (post.postId == postId) {
           return post.copyWith(
             isSaved: currentIsSaved,
-            saves: currentIsSaved
-                ? post.saves + 1
-                : post.saves - 1,
+            saves: currentIsSaved ? post.saves + 1 : post.saves - 1,
           );
         }
         return post;
@@ -417,8 +403,7 @@ class MockDocumentSnapshot implements DocumentSnapshot {
   SnapshotMetadata get metadata => throw UnimplementedError();
 
   @override
-  dynamic get(Object field) =>
-      _data[field];
+  dynamic get(Object field) => _data[field];
 
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);

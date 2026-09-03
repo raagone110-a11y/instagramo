@@ -80,8 +80,7 @@ class UserLocation {
         longitude: (json['longitude'] as num?)?.toDouble() ?? 0.0,
       );
 
-  UserLocation copyWith({double? latitude, double? longitude}) =>
-      UserLocation(
+  UserLocation copyWith({double? latitude, double? longitude}) => UserLocation(
         latitude: latitude ?? this.latitude,
         longitude: longitude ?? this.longitude,
       );
@@ -180,8 +179,7 @@ class UserModel {
           ? PrivacySettings.fromJson(
               json['privacySettings'] as Map<String, dynamic>)
           : const PrivacySettings(),
-      nearbyFriendsEnabled:
-          json['nearbyFriendsEnabled'] as bool? ?? false,
+      nearbyFriendsEnabled: json['nearbyFriendsEnabled'] as bool? ?? false,
       lastActive: json['lastActive'] != null
           ? DateTime.tryParse(json['lastActive'] as String)
           : null,
@@ -285,8 +283,7 @@ class UserModel {
         isCreator: isCreator ?? this.isCreator,
         isOnline: isOnline ?? this.isOnline,
         privacySettings: privacySettings ?? this.privacySettings,
-        nearbyFriendsEnabled:
-            nearbyFriendsEnabled ?? this.nearbyFriendsEnabled,
+        nearbyFriendsEnabled: nearbyFriendsEnabled ?? this.nearbyFriendsEnabled,
         lastActive: lastActive ?? this.lastActive,
         createdAt: createdAt ?? this.createdAt,
         updatedAt: updatedAt ?? this.updatedAt,

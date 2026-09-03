@@ -263,15 +263,14 @@ class UserRepository {
   // ============================================================================
 
   /// Follow a user
-  Future<void> followUser({required String currentUserId, required String targetUserId}) async {
+  Future<void> followUser(
+      {required String currentUserId, required String targetUserId}) async {
     try {
       final batch = _firestore.batch();
 
       // Add target user to current user's following
       batch.update(
-        _firestore
-            .collection(AppConstants.usersCollection)
-            .doc(currentUserId),
+        _firestore.collection(AppConstants.usersCollection).doc(currentUserId),
         {
           'following': FieldValue.arrayUnion([targetUserId]),
           'updatedAt': DateTime.now().toIso8601String(),
@@ -280,9 +279,7 @@ class UserRepository {
 
       // Add current user to target user's followers
       batch.update(
-        _firestore
-            .collection(AppConstants.usersCollection)
-            .doc(targetUserId),
+        _firestore.collection(AppConstants.usersCollection).doc(targetUserId),
         {
           'followers': FieldValue.arrayUnion([currentUserId]),
           'updatedAt': DateTime.now().toIso8601String(),
@@ -316,14 +313,13 @@ class UserRepository {
   }
 
   /// Unfollow a user
-  Future<void> unfollowUser({required String currentUserId, required String targetUserId}) async {
+  Future<void> unfollowUser(
+      {required String currentUserId, required String targetUserId}) async {
     try {
       final batch = _firestore.batch();
 
       batch.update(
-        _firestore
-            .collection(AppConstants.usersCollection)
-            .doc(currentUserId),
+        _firestore.collection(AppConstants.usersCollection).doc(currentUserId),
         {
           'following': FieldValue.arrayRemove([targetUserId]),
           'updatedAt': DateTime.now().toIso8601String(),
@@ -331,9 +327,7 @@ class UserRepository {
       );
 
       batch.update(
-        _firestore
-            .collection(AppConstants.usersCollection)
-            .doc(targetUserId),
+        _firestore.collection(AppConstants.usersCollection).doc(targetUserId),
         {
           'followers': FieldValue.arrayRemove([currentUserId]),
           'updatedAt': DateTime.now().toIso8601String(),
@@ -361,7 +355,8 @@ class UserRepository {
   }
 
   /// Check if current user follows target user
-  Future<bool> isFollowing({required String currentUserId, required String targetUserId}) async {
+  Future<bool> isFollowing(
+      {required String currentUserId, required String targetUserId}) async {
     try {
       final doc = await _firestore
           .collection(AppConstants.usersCollection)
@@ -401,7 +396,9 @@ class UserRepository {
       }
 
       final snapshot = await query.get();
-      return snapshot.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
+      return snapshot.docs
+          .map((doc) => UserModel.fromJson(doc.data()))
+          .toList();
     } on FirebaseException catch (e) {
       throw UserException(
         e.message ?? AppConstants.genericError,
@@ -437,7 +434,9 @@ class UserRepository {
       }
 
       final snapshot = await query.get();
-      return snapshot.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
+      return snapshot.docs
+          .map((doc) => UserModel.fromJson(doc.data()))
+          .toList();
     } on FirebaseException catch (e) {
       throw UserException(
         e.message ?? AppConstants.genericError,
@@ -464,11 +463,14 @@ class UserRepository {
       final snapshot = await _firestore
           .collection(AppConstants.usersCollection)
           .where('username', isGreaterThanOrEqualTo: query.toLowerCase())
-          .where('username', isLessThanOrEqualTo: '${query.toLowerCase()}\uf8ff')
+          .where('username',
+              isLessThanOrEqualTo: '${query.toLowerCase()}\uf8ff')
           .limit(limit)
           .get();
 
-      return snapshot.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
+      return snapshot.docs
+          .map((doc) => UserModel.fromJson(doc.data()))
+          .toList();
     } on FirebaseException catch (e) {
       throw UserException(
         e.message ?? AppConstants.genericError,
@@ -506,7 +508,9 @@ class UserRepository {
 
       for (final followingId in followingIds) {
         final user = await getUserById(followingId);
-        if (user != null && user.nearbyFriendsEnabled && user.location != null) {
+        if (user != null &&
+            user.nearbyFriendsEnabled &&
+            user.location != null) {
           final distance = _calculateDistance(
             latitude,
             longitude,
@@ -561,14 +565,13 @@ class UserRepository {
   // ============================================================================
 
   /// Block a user
-  Future<void> blockUser({required String currentUserId, required String targetUserId}) async {
+  Future<void> blockUser(
+      {required String currentUserId, required String targetUserId}) async {
     try {
       final batch = _firestore.batch();
 
       batch.update(
-        _firestore
-            .collection(AppConstants.usersCollection)
-            .doc(currentUserId),
+        _firestore.collection(AppConstants.usersCollection).doc(currentUserId),
         {
           'blockedUsers': FieldValue.arrayUnion([targetUserId]),
           'following': FieldValue.arrayRemove([targetUserId]),
@@ -577,9 +580,7 @@ class UserRepository {
       );
 
       batch.update(
-        _firestore
-            .collection(AppConstants.usersCollection)
-            .doc(targetUserId),
+        _firestore.collection(AppConstants.usersCollection).doc(targetUserId),
         {
           'followers': FieldValue.arrayRemove([currentUserId]),
           'updatedAt': DateTime.now().toIso8601String(),
@@ -596,7 +597,8 @@ class UserRepository {
   }
 
   /// Unblock a user
-  Future<void> unblockUser({required String currentUserId, required String targetUserId}) async {
+  Future<void> unblockUser(
+      {required String currentUserId, required String targetUserId}) async {
     try {
       await _firestore
           .collection(AppConstants.usersCollection)
@@ -716,8 +718,7 @@ class UserRepository {
     final lat1Rad = _toRadians(lat1);
     final lat2Rad = _toRadians(lat2);
 
-    final a =
-        math.sin(dLat / 2) * math.sin(dLat / 2) +
+    final a = math.sin(dLat / 2) * math.sin(dLat / 2) +
         math.cos(lat1Rad) *
             math.cos(lat2Rad) *
             math.sin(dLon / 2) *
@@ -728,6 +729,5 @@ class UserRepository {
     return earthRadius * c;
   }
 
-  double _toRadians(double degrees) =>
-      degrees * (math.pi / 180);
+  double _toRadians(double degrees) => degrees * (math.pi / 180);
 }

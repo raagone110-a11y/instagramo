@@ -54,7 +54,10 @@ class LoginScreen extends ConsumerWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.3),
                         blurRadius: 24,
                         offset: const Offset(0, 12),
                       ),
@@ -65,7 +68,10 @@ class LoginScreen extends ConsumerWidget {
                     size: 48,
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
-                ).animate().fade(duration: 600.ms).scale(duration: 600.ms, curve: Curves.elasticOut),
+                )
+                    .animate()
+                    .fade(duration: 600.ms)
+                    .scale(duration: 600.ms, curve: Curves.elasticOut),
                 const SizedBox(height: 16),
                 Text(
                   'Instagramo',
@@ -74,19 +80,26 @@ class LoginScreen extends ConsumerWidget {
                         fontWeight: FontWeight.w800,
                         letterSpacing: -0.5,
                       ),
-                ).animate().fade(delay: 200.ms, duration: 600.ms).slideY(begin: 0.3, end: 0),
+                )
+                    .animate()
+                    .fade(delay: 200.ms, duration: 600.ms)
+                    .slideY(begin: 0.3, end: 0),
                 const SizedBox(height: 8),
                 Text(
                   'Share moments, stay connected',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withOpacity(0.6),
                       ),
                 ).animate().fade(delay: 400.ms, duration: 600.ms),
                 const SizedBox(height: 48),
                 Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Row(
@@ -94,23 +107,34 @@ class LoginScreen extends ConsumerWidget {
                       _ToggleTab(
                         label: 'Email',
                         isSelected: loginMode == LoginMode.email,
-                        onTap: () => ref.read(loginModeProvider.notifier).state = LoginMode.email,
+                        onTap: () => ref
+                            .read(loginModeProvider.notifier)
+                            .state = LoginMode.email,
                       ),
                       _ToggleTab(
                         label: 'Phone',
                         isSelected: loginMode == LoginMode.phone,
-                        onTap: () => ref.read(loginModeProvider.notifier).state = LoginMode.phone,
+                        onTap: () => ref
+                            .read(loginModeProvider.notifier)
+                            .state = LoginMode.phone,
                       ),
                     ],
                   ),
-                ).animate().fade(delay: 300.ms, duration: 400.ms).slideY(begin: 0.2, end: 0),
+                )
+                    .animate()
+                    .fade(delay: 300.ms, duration: 400.ms)
+                    .slideY(begin: 0.2, end: 0),
                 const SizedBox(height: 32),
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
-                  child: loginMode == LoginMode.email ? _buildEmailField(context, ref) : _buildPhoneField(context, ref),
+                  child: loginMode == LoginMode.email
+                      ? _buildEmailField(context, ref)
+                      : _buildPhoneField(context, ref),
                 ),
                 const SizedBox(height: 16),
-                _PasswordField(ref: ref).animate().fade(delay: 500.ms, duration: 400.ms),
+                _PasswordField(ref: ref)
+                    .animate()
+                    .fade(delay: 500.ms, duration: 400.ms),
                 const SizedBox(height: 8),
                 Align(
                   alignment: Alignment.centerRight,
@@ -131,17 +155,30 @@ class LoginScreen extends ConsumerWidget {
                 const SizedBox(height: 24),
                 Row(
                   children: [
-                    Expanded(child: Divider(color: Theme.of(context).colorScheme.outline.withOpacity(0.5))),
+                    Expanded(
+                        child: Divider(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .outline
+                                .withOpacity(0.5))),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
                         'or',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurface
+                                  .withOpacity(0.5),
                             ),
                       ),
                     ),
-                    Expanded(child: Divider(color: Theme.of(context).colorScheme.outline.withOpacity(0.5))),
+                    Expanded(
+                        child: Divider(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .outline
+                                .withOpacity(0.5))),
                   ],
                 ),
                 const SizedBox(height: 24),
@@ -150,7 +187,8 @@ class LoginScreen extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account? ", style: Theme.of(context).textTheme.bodyMedium),
+                    Text("Don't have an account? ",
+                        style: Theme.of(context).textTheme.bodyMedium),
                     GestureDetector(
                       onTap: () => context.go('/register'),
                       child: Text(
@@ -159,7 +197,7 @@ class LoginScreen extends ConsumerWidget {
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.w700,
                           fontSize: 15,
-                      ),
+                        ),
                       ),
                     ),
                   ],
@@ -183,18 +221,21 @@ class LoginScreen extends ConsumerWidget {
       decoration: InputDecoration(
         labelText: 'Email',
         hintText: 'your@email.com',
-        prefixIcon: Icon(Icons.email_outlined, color: Theme.of(context).colorScheme.onSurfaceVariant),
+        prefixIcon: Icon(Icons.email_outlined,
+            color: Theme.of(context).colorScheme.onSurfaceVariant),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
+          borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary, width: 2),
         ),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       ),
       validator: (value) {
         if (value == null || value.isEmpty) return 'Please enter your email';
-        if (!value.contains('@') || !value.contains('.')) return 'Please enter a valid email';
+        if (!value.contains('@') || !value.contains('.'))
+          return 'Please enter a valid email';
         return null;
       },
     );
@@ -211,17 +252,20 @@ class LoginScreen extends ConsumerWidget {
       decoration: InputDecoration(
         labelText: 'Phone Number',
         hintText: '+1 (555) 000-0000',
-        prefixIcon: Icon(Icons.phone_outlined, color: Theme.of(context).colorScheme.onSurfaceVariant),
+        prefixIcon: Icon(Icons.phone_outlined,
+            color: Theme.of(context).colorScheme.onSurfaceVariant),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
+          borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary, width: 2),
         ),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       ),
       validator: (value) {
-        if (value == null || value.isEmpty) return 'Please enter your phone number';
+        if (value == null || value.isEmpty)
+          return 'Please enter your phone number';
         if (value.length < 10) return 'Please enter a valid phone number';
         return null;
       },
@@ -234,7 +278,8 @@ class _ToggleTab extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  const _ToggleTab({required this.label, required this.isSelected, required this.onTap});
+  const _ToggleTab(
+      {required this.label, required this.isSelected, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -245,14 +290,18 @@ class _ToggleTab extends StatelessWidget {
           duration: const Duration(milliseconds: 250),
           padding: const EdgeInsets.symmetric(vertical: 14),
           decoration: BoxDecoration(
-            color: isSelected ? Theme.of(context).colorScheme.primary : Colors.transparent,
+            color: isSelected
+                ? Theme.of(context).colorScheme.primary
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(14),
           ),
           child: Center(
             child: Text(
               label,
               style: TextStyle(
-                color: isSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                color: isSelected
+                    ? Theme.of(context).colorScheme.onPrimary
+                    : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                 fontWeight: FontWeight.w700,
                 fontSize: 15,
               ),
@@ -284,15 +333,21 @@ class _PasswordFieldState extends ConsumerState<_PasswordField> {
       decoration: InputDecoration(
         labelText: 'Password',
         hintText: 'Enter your password',
-        prefixIcon: Icon(Icons.lock_outlined, color: Theme.of(context).colorScheme.onSurfaceVariant),
+        prefixIcon: Icon(Icons.lock_outlined,
+            color: Theme.of(context).colorScheme.onSurfaceVariant),
         suffixIcon: IconButton(
-          icon: Icon(_obscure ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: Theme.of(context).colorScheme.onSurfaceVariant),
+          icon: Icon(
+              _obscure
+                  ? Icons.visibility_off_outlined
+                  : Icons.visibility_outlined,
+              color: Theme.of(context).colorScheme.onSurfaceVariant),
           onPressed: () => setState(() => _obscure = !_obscure),
         ),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
+          borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary, width: 2),
         ),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
@@ -328,13 +383,17 @@ class _LoginButton extends ConsumerWidget {
                   try {
                     final email = ref.read(emailControllerProvider).text.trim();
                     final password = ref.read(passwordControllerProvider).text;
-                    await ref.read(authRepositoryProvider).signInWithEmailAndPassword(email: email, password: password);
+                    await ref
+                        .read(authRepositoryProvider)
+                        .signInWithEmailAndPassword(
+                            email: email, password: password);
                     if (context.mounted) {
                       context.go('/home');
                     }
                   } on AuthException catch (e) {
                     if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(e.message)));
                     }
                   } finally {
                     ref.read(isLoadingProvider.notifier).state = false;
@@ -344,7 +403,8 @@ class _LoginButton extends ConsumerWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.primary,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           elevation: 0,
         ),
         child: isLoading
@@ -353,10 +413,15 @@ class _LoginButton extends ConsumerWidget {
                 height: 24,
                 child: CircularProgressIndicator(
                   strokeWidth: 2.5,
-                  valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.onPrimary),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.onPrimary),
                 ),
               )
-            : const Text('Log In', style: TextStyle(fontSize: 16, fontWeight: FontWeight.q700, letterSpacing: 0.3)),
+            : const Text('Log In',
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.q700,
+                    letterSpacing: 0.3)),
       ),
     );
   }
@@ -378,18 +443,24 @@ class _GoogleSignInButton extends ConsumerWidget {
             }
           } on AuthException catch (e) {
             if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(e.message)));
             }
           }
         },
         icon: const _GoogleIcon(),
         label: Text(
           'Continue with Google',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
+          style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              color: Theme.of(context).colorScheme.onSurface),
         ),
         style: OutlinedButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          side: BorderSide(color: Theme.of(context).colorScheme.outline.withOpacity(0.4)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          side: BorderSide(
+              color: Theme.of(context).colorScheme.outline.withOpacity(0.4)),
         ),
       ),
     );
@@ -406,7 +477,8 @@ class _GoogleIcon extends StatelessWidget {
       height: 20,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage('https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg'),
+          image: NetworkImage(
+              'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg'),
           fit: BoxFit.contain,
         ),
       ),

@@ -63,8 +63,7 @@ class UserNotifier extends StateNotifier<UserState> {
   final UserRepository _userRepository;
   final Ref _ref;
 
-  UserNotifier(this._userRepository, this._ref)
-      : super(const UserState());
+  UserNotifier(this._userRepository, this._ref) : super(const UserState());
 
   /// Load current user
   Future<void> loadCurrentUser(String userId) async {
@@ -232,8 +231,9 @@ class UserNotifier extends StateNotifier<UserState> {
 
       state = state.copyWith(
         currentUser: state.currentUser!.copyWith(
-          following:
-              state.currentUser!.following.where((id) => id != targetUserId).toList(),
+          following: state.currentUser!.following
+              .where((id) => id != targetUserId)
+              .toList(),
         ),
         isUpdating: false,
       );
@@ -318,7 +318,8 @@ class UserNotifier extends StateNotifier<UserState> {
       final userId = state.currentUser?.uid;
       if (userId == null) return false;
 
-      await _userRepository.updatePrivacySettings(uid: userId, settings: settings);
+      await _userRepository.updatePrivacySettings(
+          uid: userId, settings: settings);
 
       state = state.copyWith(
         currentUser: state.currentUser!.copyWith(privacySettings: settings),
@@ -456,13 +457,15 @@ final isFollowingProvider =
 });
 
 /// Get followers list provider
-final followersProvider = FutureProvider.family<List<UserModel>, String>((ref, userId) async {
+final followersProvider =
+    FutureProvider.family<List<UserModel>, String>((ref, userId) async {
   final userRepo = ref.watch(userRepositoryProvider);
   return userRepo.getFollowers(userId: userId);
 });
 
 /// Get following list provider
-final followingProvider = FutureProvider.family<List<UserModel>, String>((ref, userId) async {
+final followingProvider =
+    FutureProvider.family<List<UserModel>, String>((ref, userId) async {
   final userRepo = ref.watch(userRepositoryProvider);
   return userRepo.getFollowing(userId: userId);
 });

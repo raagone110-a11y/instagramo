@@ -33,7 +33,8 @@ class NearbyUser {
 
 // ─── Nearby Friends Providers ─────────────────────────────────────────────────
 
-final distanceRangeProvider = StateProvider<DistanceRange>((ref) => DistanceRange.km5);
+final distanceRangeProvider =
+    StateProvider<DistanceRange>((ref) => DistanceRange.km5);
 final privacyEnabledProvider = StateProvider<bool>((ref) => true);
 final isLocationLoadingProvider = StateProvider<bool>((ref) => false);
 
@@ -279,10 +280,7 @@ class NearbyFriendsScreen extends ConsumerWidget {
                 );
               }).toList(),
             ),
-          )
-              .animate()
-              .fade(duration: 400.ms)
-              .slideY(begin: -0.1, end: 0),
+          ).animate().fade(duration: 400.ms).slideY(begin: -0.1, end: 0),
 
           // ── Results Count ──────────────────────────────────────────────────
           Padding(
@@ -325,12 +323,13 @@ class NearbyFriendsScreen extends ConsumerWidget {
                         const SizedBox(height: 16),
                         Text(
                           'Finding people nearby...',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onSurface
-                                    .withOpacity(0.6),
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withOpacity(0.6),
+                                  ),
                         ),
                       ],
                     ),
@@ -351,7 +350,10 @@ class NearbyFriendsScreen extends ConsumerWidget {
                             const SizedBox(height: 12),
                             Text(
                               'No one nearby right now',
-                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
                                         .onSurface
@@ -376,7 +378,8 @@ class NearbyFriendsScreen extends ConsumerWidget {
                                 context.push('/profile/${user.username}'),
                             onTapMessage: () => context.push('/chat'),
                           )
-                              .animate(delay: Duration(milliseconds: 70 * index))
+                              .animate(
+                                  delay: Duration(milliseconds: 70 * index))
                               .fade(duration: 400.ms)
                               .slideY(begin: 0.15, end: 0);
                         },
@@ -456,7 +459,9 @@ class _NearbyUserCard extends ConsumerWidget {
                       color: const Color(0xFF4CAF50),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .surfaceContainerHighest,
                         width: 2,
                       ),
                     ),
@@ -479,9 +484,10 @@ class _NearbyUserCard extends ConsumerWidget {
                       Flexible(
                         child: Text(
                           user.username,
-                          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleSmall?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -528,13 +534,14 @@ class _NearbyUserCard extends ConsumerWidget {
                         Flexible(
                           child: Text(
                             '${user.mutualFriends.length} mutual',
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.5),
-                                  fontSize: 12,
-                                ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface
+                                          .withOpacity(0.5),
+                                      fontSize: 12,
+                                    ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -578,12 +585,13 @@ class _NearbyUserCard extends ConsumerWidget {
                     vertical: 7,
                   ),
                   decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .surface
-                        .withOpacity(0.5),
+                    color:
+                        Theme.of(context).colorScheme.surface.withOpacity(0.5),
                     border: Border.all(
-                      color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .outline
+                          .withOpacity(0.3),
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -603,10 +611,7 @@ class _NearbyUserCard extends ConsumerWidget {
                   vertical: 7,
                 ),
                 decoration: BoxDecoration(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withOpacity(0.1),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(

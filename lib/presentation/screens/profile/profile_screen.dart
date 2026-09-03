@@ -36,7 +36,8 @@ class ProfileModel {
 final profileProvider = StateProvider<ProfileModel>((ref) => ProfileModel(
       username: 'johndoe_official',
       displayName: 'John Doe',
-      bio: '📸 Photographer | 🌍 Traveler\n✨ Creating moments that matter\n🔗 Link below',
+      bio:
+          '📸 Photographer | 🌍 Traveler\n✨ Creating moments that matter\n🔗 Link below',
       avatar: 'https://i.pravatar.cc/200?img=12',
       coverPhoto: 'https://picsum.photos/seed/cover/800/400',
       postCount: 247,
@@ -127,7 +128,10 @@ class ProfileScreen extends ConsumerWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          Theme.of(context).colorScheme.surface.withOpacity(0.8),
+                          Theme.of(context)
+                              .colorScheme
+                              .surface
+                              .withOpacity(0.8),
                         ],
                       ),
                     ),
@@ -152,8 +156,7 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                       child: CircleAvatar(
                         radius: 44,
-                        backgroundColor:
-                            Theme.of(context).colorScheme.surface,
+                        backgroundColor: Theme.of(context).colorScheme.surface,
                         child: ClipOval(
                           child: Image.network(
                             profile.avatar,
@@ -347,17 +350,20 @@ class ProfileScreen extends ConsumerWidget {
                       _TabButton(
                         icon: Icons.grid_view_rounded,
                         isSelected: selectedTab == 0,
-                        onTap: () => ref.read(selectedTabProvider.notifier).state = 0,
+                        onTap: () =>
+                            ref.read(selectedTabProvider.notifier).state = 0,
                       ),
                       _TabButton(
                         icon: Icons.movie_rounded,
                         isSelected: selectedTab == 1,
-                        onTap: () => ref.read(selectedTabProvider.notifier).state = 1,
+                        onTap: () =>
+                            ref.read(selectedTabProvider.notifier).state = 1,
                       ),
                       _TabButton(
                         icon: Icons.tag_rounded,
                         isSelected: selectedTab == 2,
-                        onTap: () => ref.read(selectedTabProvider.notifier).state = 2,
+                        onTap: () =>
+                            ref.read(selectedTabProvider.notifier).state = 2,
                       ),
                     ],
                   ),
@@ -420,10 +426,7 @@ class _StatItem extends StatelessWidget {
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withOpacity(0.6),
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
               ),
         ),
       ],
@@ -453,7 +456,8 @@ class _ProfileButton extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: onPressed,
         icon: Icon(icon, size: 18),
-        label: Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+        label: Text(label,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
         style: ElevatedButton.styleFrom(
           backgroundColor: isPrimary
               ? Theme.of(context).colorScheme.primary

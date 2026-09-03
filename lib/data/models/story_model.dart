@@ -24,15 +24,13 @@ class StoryReaction {
         'reactedAt': reactedAt.toIso8601String(),
       };
 
-  factory StoryReaction.fromJson(Map<String, dynamic> json) =>
-      StoryReaction(
+  factory StoryReaction.fromJson(Map<String, dynamic> json) => StoryReaction(
         userId: json['userId'] as String? ?? '',
         username: json['username'] as String? ?? '',
         userProfilePic: json['userProfilePic'] as String?,
         emoji: json['emoji'] as String? ?? '❤️',
         reactedAt: json['reactedAt'] != null
-            ? DateTime.tryParse(json['reactedAt'] as String) ??
-                DateTime.now()
+            ? DateTime.tryParse(json['reactedAt'] as String) ?? DateTime.now()
             : DateTime.now(),
       );
 }
@@ -75,8 +73,7 @@ class StoryReply {
         content: json['content'] as String? ?? '',
         mediaUrl: json['mediaUrl'] as String?,
         repliedAt: json['repliedAt'] != null
-            ? DateTime.tryParse(json['repliedAt'] as String) ??
-                DateTime.now()
+            ? DateTime.tryParse(json['repliedAt'] as String) ?? DateTime.now()
             : DateTime.now(),
       );
 }
@@ -223,8 +220,7 @@ class StoryModel {
       mediaDuration: json['mediaDuration'] as int? ?? 15,
       caption: json['caption'] as String?,
       reactions: (json['reactions'] as List<dynamic>?)
-              ?.map((e) =>
-                  StoryReaction.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => StoryReaction.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
       replies: (json['replies'] as List<dynamic>?)
@@ -237,8 +233,7 @@ class StoryModel {
           ? StoryMusic.fromJson(json['music'] as Map<String, dynamic>)
           : null,
       textOverlays: (json['textOverlays'] as List<dynamic>?)
-              ?.map((e) =>
-                  StoryTextOverlay.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => StoryTextOverlay.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
       stickerType: json['stickerType'] as String?,
@@ -367,8 +362,7 @@ class StoryHighlightModel {
                 .toList() ??
             [],
         createdAt: json['createdAt'] != null
-            ? DateTime.tryParse(json['createdAt'] as String) ??
-                DateTime.now()
+            ? DateTime.tryParse(json['createdAt'] as String) ?? DateTime.now()
             : DateTime.now(),
       );
 }

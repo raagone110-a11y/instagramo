@@ -217,8 +217,7 @@ class PostModel {
       likes: List<String>.from(json['likes'] ?? []),
       likeCount: json['likeCount'] as int? ?? 0,
       comments: (json['comments'] as List<dynamic>?)
-              ?.map((e) =>
-                  CommentModel.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => CommentModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
       commentCount: json['commentCount'] as int? ?? 0,

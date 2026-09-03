@@ -23,13 +23,11 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/auth/login',
     debugLogDiagnostics: false,
-
     redirect: (context, state) {
       final authState = ref.watch(authStateProvider);
       final location = state.matchedLocation;
 
-      final isAuthRoute =
-          location == '/auth/login' ||
+      final isAuthRoute = location == '/auth/login' ||
           location == '/auth/register' ||
           location == '/auth/otp';
 
@@ -43,7 +41,6 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       return null;
     },
-
     routes: [
       // AUTH
       GoRoute(
@@ -75,25 +72,21 @@ final routerProvider = Provider<GoRouter>((ref) {
             name: 'home',
             builder: (context, state) => const HomeScreen(),
           ),
-
           GoRoute(
             path: '/search',
             name: 'search',
             builder: (context, state) => const SearchScreen(),
           ),
-
           GoRoute(
             path: '/reels',
             name: 'reels',
             builder: (context, state) => const ReelsScreen(),
           ),
-
           GoRoute(
             path: '/chat',
             name: 'chatList',
             builder: (context, state) => const ChatListScreen(),
           ),
-
           GoRoute(
             path: '/profile',
             name: 'profile',
@@ -133,8 +126,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/stories/view',
         name: 'storyViewer',
         builder: (context, state) {
-          final storyId =
-              state.uri.queryParameters['storyId'] ?? '';
+          final storyId = state.uri.queryParameters['storyId'] ?? '';
 
           return StoryViewerScreen(
             storyId: storyId,
@@ -153,16 +145,14 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/nearby-friends',
         name: 'nearbyFriends',
-        builder: (context, state) =>
-            const NearbyFriendsScreen(),
+        builder: (context, state) => const NearbyFriendsScreen(),
       ),
 
       // CREATOR
       GoRoute(
         path: '/creator/dashboard',
         name: 'creatorDashboard',
-        builder: (context, state) =>
-            const CreatorDashboardScreen(),
+        builder: (context, state) => const CreatorDashboardScreen(),
       ),
     ],
   );
@@ -226,8 +216,7 @@ class MainShell extends ConsumerWidget {
     BuildContext context,
     WidgetRef ref,
   ) {
-    final location =
-        GoRouterState.of(context).matchedLocation;
+    final location = GoRouterState.of(context).matchedLocation;
 
     final currentIndex = _currentIndex(location);
 

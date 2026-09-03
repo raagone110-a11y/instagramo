@@ -154,8 +154,7 @@ class MessageModel {
           ? MessageReply.fromJson(json['replyTo'] as Map<String, dynamic>)
           : null,
       reactions: List<String>.from(json['reactions'] ?? []),
-      reactionDetails:
-          Map<String, String>.from(json['reactionDetails'] ?? {}),
+      reactionDetails: Map<String, String>.from(json['reactionDetails'] ?? {}),
       status: MessageStatus.fromString(json['status'] as String? ?? 'sent'),
       readAt: json['readAt'] != null
           ? DateTime.tryParse(json['readAt'] as String)
@@ -366,12 +365,10 @@ class ChatModel {
         chatId: chatId ?? this.chatId,
         participantIds: participantIds ?? this.participantIds,
         participantNames: participantNames ?? this.participantNames,
-        participantAvatars:
-            participantAvatars ?? this.participantAvatars,
+        participantAvatars: participantAvatars ?? this.participantAvatars,
         lastMessage: lastMessage ?? this.lastMessage,
         lastMessageType: lastMessageType ?? this.lastMessageType,
-        lastMessageSenderId:
-            lastMessageSenderId ?? this.lastMessageSenderId,
+        lastMessageSenderId: lastMessageSenderId ?? this.lastMessageSenderId,
         lastMessageAt: lastMessageAt ?? this.lastMessageAt,
         lastReadAt: lastReadAt ?? this.lastReadAt,
         unreadCount: unreadCount ?? this.unreadCount,

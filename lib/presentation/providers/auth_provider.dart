@@ -181,9 +181,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
         phoneNumber: phoneNumber,
         onVerificationCompleted: onVerificationCompleted,
         onCodeSent: (verificationId) {
-        onCodeSent(verificationId);
-      },
-      onVerificationFailed: onVerificationFailed,
+          onCodeSent(verificationId);
+        },
+        onVerificationFailed: onVerificationFailed,
         onResendCode: (verificationId, forceResendingToken) {},
       );
     } on AuthException catch (e) {

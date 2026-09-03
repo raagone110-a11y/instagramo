@@ -251,9 +251,8 @@ class _StoryAvatar extends StatelessWidget {
                   height: 64,
                   fit: BoxFit.cover,
                   errorBuilder: (_, __, ___) => Container(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .surfaceContainerHighest,
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
                     child: Icon(
                       Icons.person,
                       color: Theme.of(context)
@@ -338,8 +337,7 @@ class PostCard extends ConsumerWidget {
                     ),
                     child: CircleAvatar(
                       radius: 18,
-                      backgroundColor:
-                          Theme.of(context).colorScheme.surface,
+                      backgroundColor: Theme.of(context).colorScheme.surface,
                       child: ClipOval(
                         child: Image.network(
                           post.userAvatar,
@@ -369,10 +367,12 @@ class PostCard extends ConsumerWidget {
                         children: [
                           Text(
                             post.username,
-                            style:
-                                Theme.of(context).textTheme.titleSmall?.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
                           ),
                           if (post.isVerified)
                             Padding(
@@ -380,8 +380,7 @@ class PostCard extends ConsumerWidget {
                               child: Icon(
                                 Icons.verified_rounded,
                                 size: 16,
-                                color:
-                                    Theme.of(context).colorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                         ],
@@ -430,10 +429,8 @@ class PostCard extends ConsumerWidget {
                 child: Icon(
                   Icons.image_not_supported_outlined,
                   size: 48,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.3),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
                 ),
               ),
             ),

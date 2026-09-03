@@ -65,7 +65,8 @@ class PostRepository {
       // Upload media files
       final mediaUrls = <String>[];
       for (final file in mediaFiles) {
-        final url = await _uploadMedia(file: file, userId: userId, mediaType: mediaType);
+        final url = await _uploadMedia(
+            file: file, userId: userId, mediaType: mediaType);
         mediaUrls.add(url);
       }
 
@@ -73,9 +74,8 @@ class PostRepository {
       final now = DateTime.now();
 
       // Extract hashtags from caption if not provided
-      final extractedHashtags = hashtags.isEmpty
-          ? _extractHashtags(caption ?? '')
-          : hashtags;
+      final extractedHashtags =
+          hashtags.isEmpty ? _extractHashtags(caption ?? '') : hashtags;
 
       final post = PostModel(
         postId: postId,
@@ -387,7 +387,8 @@ class PostRepository {
   }
 
   /// Delete a post
-  Future<void> deletePost({required String postId, required String userId}) async {
+  Future<void> deletePost(
+      {required String postId, required String userId}) async {
     try {
       final post = await getPostById(postId);
       if (post == null) return;
@@ -427,7 +428,8 @@ class PostRepository {
   // ============================================================================
 
   /// Like a post
-  Future<void> likePost({required String postId, required String userId}) async {
+  Future<void> likePost(
+      {required String postId, required String userId}) async {
     try {
       final batch = _firestore.batch();
 
@@ -461,7 +463,8 @@ class PostRepository {
   }
 
   /// Unlike a post
-  Future<void> unlikePost({required String postId, required String userId}) async {
+  Future<void> unlikePost(
+      {required String postId, required String userId}) async {
     try {
       final batch = _firestore.batch();
 
@@ -655,7 +658,8 @@ class PostRepository {
   // ============================================================================
 
   /// Share a post
-  Future<void> sharePost({required String postId, required String userId}) async {
+  Future<void> sharePost(
+      {required String postId, required String userId}) async {
     try {
       await _firestore
           .collection(AppConstants.postsCollection)
@@ -686,7 +690,8 @@ class PostRepository {
   // ============================================================================
 
   /// Save a post
-  Future<void> savePost({required String postId, required String userId}) async {
+  Future<void> savePost(
+      {required String postId, required String userId}) async {
     try {
       final batch = _firestore.batch();
 
@@ -719,7 +724,8 @@ class PostRepository {
   }
 
   /// Unsave a post
-  Future<void> unsavePost({required String postId, required String userId}) async {
+  Future<void> unsavePost(
+      {required String postId, required String userId}) async {
     try {
       final batch = _firestore.batch();
 
@@ -761,7 +767,8 @@ class PostRepository {
           .limit(limit)
           .get();
 
-      final postIds = savedSnapshot.docs.map((doc) => doc['postId'] as String).toList();
+      final postIds =
+          savedSnapshot.docs.map((doc) => doc['postId'] as String).toList();
 
       if (postIds.isEmpty) return [];
 
@@ -853,7 +860,8 @@ class PostRepository {
   String _getFileExtension(File file) {
     final path = file.path;
     final extension = path.split('.').last;
-    return ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov', 'avi'].contains(extension.toLowerCase())
+    return ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov', 'avi']
+            .contains(extension.toLowerCase())
         ? extension.toLowerCase()
         : 'jpg';
   }
@@ -862,14 +870,18 @@ class PostRepository {
   List<String> _extractHashtags(String text) {
     final regex = AppConstants.hashtagRegExp;
     final matches = regex.allMatches(text);
-    return matches.map((m) => m.group(1)?.toLowerCase() ?? '').where((h) => h.isNotEmpty).toList();
+    return matches
+        .map((m) => m.group(1)?.toLowerCase() ?? '')
+        .where((h) => h.isNotEmpty)
+        .toList();
   }
 
   /// Chunk a list into sublists of given size
   List<List<T>> _chunkList<T>(List<T> list, int chunkSize) {
     final chunks = <List<T>>[];
     for (int i = 0; i < list.length; i += chunkSize) {
-      chunks.add(list.sublist(i, (i + chunkSize > list.length) ? list.length : i + chunkSize));
+      chunks.add(list.sublist(
+          i, (i + chunkSize > list.length) ? list.length : i + chunkSize));
     }
     return chunks.isEmpty ? [list] : chunks;
   }

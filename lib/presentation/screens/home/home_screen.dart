@@ -141,8 +141,7 @@ class HomeScreen extends ConsumerWidget {
           ref.read(selectedIndexProvider.notifier).state = index;
         },
         backgroundColor: Colors.transparent,
-        indicatorColor:
-            Theme.of(context).colorScheme.primary.withOpacity(0.15),
+        indicatorColor: Theme.of(context).colorScheme.primary.withOpacity(0.15),
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         destinations: List.generate(_navLabels.length, (index) {
           final isSelected = selectedIndex == index;
@@ -273,10 +272,8 @@ class _SearchPlaceholder extends ConsumerWidget {
           Text(
             'Search Screen',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.5),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                 ),
           ),
         ],
@@ -303,10 +300,8 @@ class _CreatePlaceholder extends ConsumerWidget {
           Text(
             'Create Post',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.5),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                 ),
           ),
         ],
@@ -333,10 +328,8 @@ class _ReelsPlaceholder extends ConsumerWidget {
           Text(
             'Reels Screen',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.5),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                 ),
           ),
         ],
@@ -363,10 +356,8 @@ class _ProfilePlaceholder extends ConsumerWidget {
           Text(
             'Profile Screen',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.5),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                 ),
           ),
         ],

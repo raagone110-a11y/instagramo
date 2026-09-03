@@ -125,7 +125,8 @@ class AppConstants {
   static const String emptyFeedPath = 'assets/images/empty_feed.png';
   static const String noStoriesPath = 'assets/images/no_stories.png';
   static const String errorIllustrationPath = 'assets/images/error.png';
-  static const String onboardingIllustrationPath = 'assets/images/onboarding.png';
+  static const String onboardingIllustrationPath =
+      'assets/images/onboarding.png';
 
   // Error messages
   static const String genericError = 'Something went wrong. Please try again.';
@@ -137,7 +138,8 @@ class AppConstants {
   static const String sessionExpired = 'Session expired. Please log in again.';
   static const String accountDisabled =
       'Your account has been disabled. Please contact support.';
-  static const String rateLimited = 'Too many requests. Please try again later.';
+  static const String rateLimited =
+      'Too many requests. Please try again later.';
   static const String fileTooLarge = 'File size exceeds the maximum limit.';
   static const String unsupportedFormat = 'Unsupported file format.';
   static const String blockedError = 'You have been blocked by this user.';

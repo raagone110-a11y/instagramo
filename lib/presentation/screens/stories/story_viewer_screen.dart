@@ -312,9 +312,7 @@ class _StoryViewerScreenState extends ConsumerState<StoryViewerScreen>
                     );
                   }),
                 ),
-              )
-                  .animate()
-                  .fade(duration: 400.ms),
+              ).animate().fade(duration: 400.ms),
 
               // ── Top Bar: User Info ─────────────────────────────────────────
               Positioned(
@@ -342,7 +340,8 @@ class _StoryViewerScreenState extends ConsumerState<StoryViewerScreen>
                             fit: BoxFit.cover,
                             errorBuilder: (_, __, ___) => Container(
                               color: Colors.grey[700],
-                              child: const Icon(Icons.person, size: 20, color: Colors.white),
+                              child: const Icon(Icons.person,
+                                  size: 20, color: Colors.white),
                             ),
                           ),
                         ),
@@ -378,10 +377,7 @@ class _StoryViewerScreenState extends ConsumerState<StoryViewerScreen>
                     ),
                   ],
                 ),
-              )
-                  .animate()
-                  .fade(duration: 500.ms)
-                  .slideY(begin: -0.2, end: 0),
+              ).animate().fade(duration: 500.ms).slideY(begin: -0.2, end: 0),
 
               // ── Tap Zones: Previous / Next ─────────────────────────────────
               Positioned(
@@ -429,9 +425,7 @@ class _StoryViewerScreenState extends ConsumerState<StoryViewerScreen>
                     ),
                     textAlign: TextAlign.center,
                   ),
-                )
-                    .animate()
-                    .fade(delay: 300.ms, duration: 500.ms),
+                ).animate().fade(delay: 300.ms, duration: 500.ms),
 
               // ── Bottom Bar: Reply Input ────────────────────────────────────
               Positioned(
@@ -454,9 +448,11 @@ class _StoryViewerScreenState extends ConsumerState<StoryViewerScreen>
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: TextField(
-                          style: const TextStyle(color: Colors.white, fontSize: 14),
-                          onChanged: (value) =>
-                              ref.read(replyInputProvider.notifier).state = value,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 14),
+                          onChanged: (value) => ref
+                              .read(replyInputProvider.notifier)
+                              .state = value,
                           decoration: InputDecoration(
                             hintText: 'Send message...',
                             hintStyle: TextStyle(
@@ -468,7 +464,8 @@ class _StoryViewerScreenState extends ConsumerState<StoryViewerScreen>
                           ),
                           onSubmitted: (value) {
                             ref.read(replyInputProvider.notifier).state = '';
-                            ref.read(isReplyFocusedProvider.notifier).state = false;
+                            ref.read(isReplyFocusedProvider.notifier).state =
+                                false;
                             // Send reply logic
                           },
                         ),
@@ -489,10 +486,7 @@ class _StoryViewerScreenState extends ConsumerState<StoryViewerScreen>
                     ),
                   ],
                 ),
-              )
-                  .animate()
-                  .fade(duration: 600.ms)
-                  .slideY(begin: 0.2, end: 0),
+              ).animate().fade(duration: 600.ms).slideY(begin: 0.2, end: 0),
 
               // ── Right Side Actions ─────────────────────────────────────────
               Positioned(

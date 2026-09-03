@@ -451,10 +451,7 @@ class AuthRepository {
 
   /// Update the user's last active timestamp
   Future<void> _updateLastActive(String uid) async {
-    await _firestore
-        .collection(AppConstants.usersCollection)
-        .doc(uid)
-        .update({
+    await _firestore.collection(AppConstants.usersCollection).doc(uid).update({
       'lastActive': DateTime.now().toIso8601String(),
       'updatedAt': DateTime.now().toIso8601String(),
     });
@@ -462,10 +459,7 @@ class AuthRepository {
 
   /// Update the user's online status
   Future<void> _updateOnlineStatus(String uid, bool isOnline) async {
-    await _firestore
-        .collection(AppConstants.usersCollection)
-        .doc(uid)
-        .update({
+    await _firestore.collection(AppConstants.usersCollection).doc(uid).update({
       'isOnline': isOnline,
     });
   }
@@ -533,7 +527,10 @@ class AuthRepository {
 
   /// Generate a username from email address
   String _generateUsernameFromEmail(String email) {
-    final username = email.split('@')[0].replaceAll(RegExp(r'[^a-zA-Z0-9_]'), '');
-    return username.isEmpty ? 'user_${DateTime.now().millisecondsSinceEpoch}' : username;
+    final username =
+        email.split('@')[0].replaceAll(RegExp(r'[^a-zA-Z0-9_]'), '');
+    return username.isEmpty
+        ? 'user_${DateTime.now().millisecondsSinceEpoch}'
+        : username;
   }
 }

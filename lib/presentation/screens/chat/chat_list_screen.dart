@@ -161,10 +161,8 @@ class ChatListScreen extends ConsumerWidget {
                 hintText: 'Search conversations...',
                 prefixIcon: Icon(
                   Icons.search_rounded,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withOpacity(0.5),
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                 ),
                 suffixIcon: searchQuery.isNotEmpty
                     ? IconButton(
@@ -192,10 +190,7 @@ class ChatListScreen extends ConsumerWidget {
                 ),
               ),
             ),
-          )
-              .animate()
-              .fade(duration: 400.ms)
-              .slideY(begin: -0.1, end: 0),
+          ).animate().fade(duration: 400.ms).slideY(begin: -0.1, end: 0),
 
           // ── Conversations List ─────────────────────────────────────────────
           Expanded(
@@ -205,17 +200,13 @@ class ChatListScreen extends ConsumerWidget {
               separatorBuilder: (_, __) => Divider(
                 height: 0,
                 indent: 76,
-                color: Theme.of(context)
-                    .colorScheme
-                    .outline
-                    .withOpacity(0.1),
+                color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
               ),
               itemBuilder: (context, index) {
                 final conversation = filteredConversations[index];
                 return _ConversationTile(
                   conversation: conversation,
-                  onTap: () =>
-                      context.push('/chat/${conversation.id}'),
+                  onTap: () => context.push('/chat/${conversation.id}'),
                 )
                     .animate(delay: Duration(milliseconds: 50 * index))
                     .fade(duration: 300.ms)
@@ -278,8 +269,7 @@ class _ConversationTile extends StatelessWidget {
                   ),
                   child: CircleAvatar(
                     radius: 28,
-                    backgroundColor:
-                        Theme.of(context).colorScheme.surface,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     child: ClipOval(
                       child: Image.network(
                         conversation.avatar,
@@ -368,8 +358,9 @@ class _ConversationTile extends StatelessWidget {
                                         .colorScheme
                                         .onSurface
                                         .withOpacity(0.5),
-                                fontWeight:
-                                    hasUnread ? FontWeight.w600 : FontWeight.w400,
+                                fontWeight: hasUnread
+                                    ? FontWeight.w600
+                                    : FontWeight.w400,
                               ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
