@@ -1,31 +1,18 @@
-@@ -0,0 +1,30 @@
-name: Build APK
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
-on:
-  push:
-    branches: [ main, master ]
-  workflow_dispatch:
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.24.0'
-          channel: 'stable'
-
-      - run: flutter pub get
-      - run: flutter build apk --release
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+tasks.register<Delete>("clean") {
+    delete(rootProject.buildDir)
+}
