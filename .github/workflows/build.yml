@@ -20,6 +20,36 @@ jobs:
         with:
           channel: 'stable'
 
+      - name: Restore fixed testing keystore
+        id: keystore-cache
+        uses: actions/cache@v4
+        with:
+          path: android/fixed-debug.keystore
+          key: instagramo-fixed-debug-keystore-v1
+
+      - name: Generate fixed testing keystore (first run only)
+        if: steps.keystore-cache.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          keytool -genkeypair -v \
+            -keystore android/fixed-debug.keystore \
+            -storepass android \
+            -keypass android \
+            -alias androiddebugkey \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -dname "CN=Android Debug,O=Android,C=US"
+          chmod 600 android/fixed-debug.keystore
+
+      - name: Print testing keystore SHA-1
+        run: |
+          keytool -list -v \
+            -keystore android/fixed-debug.keystore \
+            -storepass android \
+            -alias androiddebugkey \
+            | grep -E 'Owner:|SHA1:|SHA-1:'
+
       - run: flutter pub get
       - run: flutter build apk --release
 
