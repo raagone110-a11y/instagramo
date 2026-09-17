@@ -1,54 +1,31 @@
-plugins {
-    id("com.android.application")
-    id("dev.flutter.flutter-gradle-plugin")
-}
+@@ -0,0 +1,30 @@
+name: Build APK
 
-android {
-    namespace = "com.example.instagramo"
-    compileSdk = 36
-    ndkVersion = "28.2.13676358"
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-        isCoreLibraryDesugaringEnabled = true
-    }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-    defaultConfig {
-        applicationId = "com.example.instagramo"
-        minSdk = flutter.minSdkVersion
-        ndkVersion = "28.2.13676358"
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
-    }
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-    signingConfigs {
-        create("fixedDebug") {
-            storeFile = file("../fixed-debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-        }
-    }
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
 
-    buildTypes {
-        release {
-            signingConfig = signingConfigs.getByName("fixedDebug")
-        }
-    }
-}
+      - run: flutter pub get
+      - run: flutter build apk --release
 
-kotlin {
-    compilerOptions {
-        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
-    }
-}
-
-flutter {
-    source = "../.."
-}
-
-dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
-}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
